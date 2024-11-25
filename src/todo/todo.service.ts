@@ -27,7 +27,10 @@ export class TodoService {
         completed: data.completed,
       },
     });
-    return todo;
+    if (!todo) {
+      throw new Error('Todo not created');
+    }
+    return 'Todo created successfully';
   }
 
   async deleteTodoById(id: number) {
