@@ -14,9 +14,6 @@ export class TodoService {
     const todo = await this.prisma.todo.findUnique({
       where: { id },
     });
-    if (!todo) {
-      throw new Error('Todo not found');
-    }
     return todo;
   }
 
@@ -27,10 +24,7 @@ export class TodoService {
         completed: data.completed,
       },
     });
-    if (!todo) {
-      throw new Error('Todo not created');
-    }
-    return 'Todo created successfully';
+    return todo;
   }
 
   async deleteTodoById(id: number) {
